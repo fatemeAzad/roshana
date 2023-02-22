@@ -13,6 +13,118 @@
   }
 }
 
+.btn-manage {
+  background-color: rgb(112 131 245);
+  color: rgb(223, 217, 234);
+}
+
+.btn-manage:hover {
+  background-color: white;
+  color: rgb(112 131 245);
+}
+
+.nav-item {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  font-size: 17px;
+  margin-right: 120px;
+}
+
+.logo {
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  color: antiquewhite;
+}
+
+.roshana {
+  color: #ccbfdf;
+}
+
+.dropdown-toggle {
+  color: antiquewhite;
+}
+
+.dropdown-toggle:hover {
+  color: antiquewhite;
+}
+
+.landing-layer {
+  width: 110%;
+  background: url("../src/assets/landing.jpg") no-repeat center center / cover !important;
+  position: relative;
+}
+
+.search {
+  margin-top: 250px;
+  margin-bottom: 350px;
+  background-color: antiquewhite;
+  width: 500px;
+  height: 50px;
+  border: none;
+  border-radius: 30px;
+  direction: ltr;
+  margin-right: 350px;
+  font-size: 25px;
+  padding-left: 20px;
+}
+
+.search-icon {
+  background-color: antiquewhite;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 250px;
+  margin-right: 7px;
+  align-items: center;
+  font-size: 20px;
+  color: #5f6276;
+}
+
+.search-box {
+  display: flex;
+}
+
+.login {
+  margin-top: 150px;
+  width: 500px;
+}
+
+.sub-login {
+  width: 500px;
+}
+
+.form {
+  width: 900px;
+}
+
+.sub-reg-form {
+  width: 350px;
+  margin-bottom: 5px;
+}
+.sub-form {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+.reg-width {
+  width: 210px;
+}
+
+.hhh {
+  width: 100%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -32,7 +144,74 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  background-color: #dcecf1;
+  font-family: "Vazir", "tahoma", "Ubuntu" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input[type="text"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder,
+input[type="number"]::-webkit-input-placeholder {
+  color: #f8f8f4;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+select {
+  color: #ffffff !important;
+  /* background-color: rgb(112 131 245) !important; */
+  /* border-color: #8359be !important; */
+  border: none;
+}
+
+.form-control {
+  /* background-color: rgb(112 131 245) !important; */
+  color: #ffffff !important;
+  /* border-color: #8359be !important; */
+}
+
+
+.form-control-reg {
+  background-color: rgb(112 131 245) !important;
+  color: #ffffff;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+input[type="file"] {
+  position: absolute;
+  z-index: -1;
+  top: 10px;
+  left: 8px;
+  font-size: 17px;
+  color: #030303;
+}
+
+.button-wrap {
+  position: relative;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 5px;
+
+  font-size: 36px;
+  font-weight: bold;
 }

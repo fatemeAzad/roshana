@@ -1,24 +1,91 @@
-import logo from './logo.svg';
-import './App.css';
+import { useNavigate } from "react-router-dom";
+import "./App.css";
+import { useEffect, useState } from "react";
+import {
+  createStudent,
+  getAllResumes,
+  getAllStudents,
+  getAllTeachers,
+} from "./services/contactServices";
+import { ResumeContext } from "./contex/ResumeContext";
+import { StudentContext } from "./contex/StudentContext";
+import { TeacherContext } from "./contex/TeacherContext";
+import { resumesItem } from "./helpers/resume";
 
 function App() {
+  const [teacher, setTeacher] = useState({
+    fullname: "",
+    photo: "",
+    mobile: "",
+    email: "",
+    job: "",
+    group: "",
+  });
+  const [teachers, setTeachers] = useState([]);
+  const [student, setStudent] = useState({
+    fulname: "",
+    studentid: "",
+    password: "",
+    mobile: "",
+    email: "",
+    maghta: "",
+  });
+  const [resume, setResume] = useState(resumesItem);
+  const [students, setStudents] = useState([]);
+  const [resumes, setResumes] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data: studentsData } = await getAllStudents();
+        const { data: teachersData } = await getAllTeachers();
+        const { data: resumesData } = await getAllResumes();
+
+        setStudents(studentsData);
+        setTeachers(teachersData);
+        setResumes(resumesData);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const createStudentForm = async (values) => {
+    try {
+      const { status, data } = await createStudent(values);
+      console.log("here", status, data);
+      if (status === 201) {
+        const allStudents = [...students, data];
+
+        setStudents(allStudents);
+        navigate("/");
+        console.log(data);
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <TeacherContext.Provider
+        value={{
+          teacher,
+          teachers,
+          setTeacher,
+          setTeachers,
+        }}
+      >
+        <StudentContext.Provider
+          value={{ student, students, setStudent, setStudents }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <ResumeContext.Provider
+            value={{ resume, setResume, resumes, setResumes }}
+          ></ResumeContext.Provider>
+        </StudentContext.Provider>
+      </TeacherContext.Provider>
+    </>
   );
 }
 
